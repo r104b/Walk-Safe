@@ -35,24 +35,33 @@ export default function LeafletMap({ start, goal, path, onPick }) {
         zoom={ZOOM}
         style={{ height: "100%", width: "100%" }}
       >
+        {/* DARK TILE STYLE */}
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; OpenStreetMap contributors"
+          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          attribution="&copy; OpenStreetMap contributors &copy; CARTO"
         />
 
+        {/* START MARKER */}
         <Marker position={gridToLatLng(start.x, start.y)}>
-          <Popup>Start</Popup>
+          <Popup><strong>Start</strong></Popup>
         </Marker>
 
+        {/* GOAL MARKER */}
         <Marker position={gridToLatLng(goal.x, goal.y)}>
-          <Popup>Goal</Popup>
+          <Popup><strong>Goal</strong></Popup>
         </Marker>
 
+        {/* RISK ZONES */}
         {riskZones.map(z => (
           <Circle
             key={z.id}
             center={gridToLatLng(z.cx, z.cy)}
             radius={60 + z.r * 40}
+            pathOptions={{
+              color: "red",
+              fillColor: "red",
+              fillOpacity: 0.25,
+            }}
           >
             <Popup>
               <strong>{z.label}</strong>
@@ -62,18 +71,31 @@ export default function LeafletMap({ start, goal, path, onPick }) {
           </Circle>
         ))}
 
+        {/* SAFE ZONES */}
         {safeNodes.map((s, i) => (
           <Circle
             key={i}
             center={gridToLatLng(s.x, s.y)}
-            radius={30}
+            radius={35}
+            pathOptions={{
+              color: "#4dabf7",
+              fillColor: "#4dabf7",
+              fillOpacity: 0.2,
+            }}
           >
             <Popup>{s.label}</Popup>
           </Circle>
         ))}
 
+        {/* ROUTE LINE */}
         {polyline.length > 1 && (
-          <Polyline positions={polyline} />
+          <Polyline
+            positions={polyline}
+            pathOptions={{
+              color: "#f59f00",
+              weight: 5,
+            }}
+          />
         )}
 
         <MapClickHandler onPick={onPick} />
