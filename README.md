@@ -1,16 +1,108 @@
-# React + Vite
+🗺️ TMU Walk-Safe: Adaptive Campus Safety
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Over 80% of students report feeling unsafe walking around campus, largely because urban campuses are fully integrated into the surrounding city. Students regularly navigate:
 
-Currently, two official plugins are available:
+- High-traffic intersections
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Crime-prone areas
 
-## React Compiler
+- Poorly lit streets
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Construction zones
 
-## Expanding the ESLint configuration
+- Low foot-traffic routes at night
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Other navigation apps optimize for speed, not safety.
+
+Adaptive Campus Safety introduces safety-aware routing that dynamically adapts to environmental risk factors.
+
+🗺️ What It Does
+
+This web app:
+
+📍 Accepts real start and destination locations
+
+🗺️ Generates real walking routes
+
+🔴 Detects high-risk zones along the route
+
+🔁 Automatically reroutes around dangerous areas
+
+🌙 Increases risk weighting at night
+
+⚠️ Displays live alerts
+
+📊 Calculates a dynamic safety risk score
+
+Instead of giving the fastest path, the system prioritizes safer navigation through urban campus environments.
+
+🗺️ How It Works
+
+Converts user input into coordinates using OpenStreetMap geocoding
+
+Retrieves walking routes using OSRM
+
+Detects if the route intersects hazard zones
+
+Automatically generates a detour waypoint
+
+Recalculates the route to avoid danger
+
+Applies higher risk multipliers in Night Mode
+
+🗺️ Features
+
+Dark & Light map modes
+
+Real-world walking routes
+
+Visualized hazard zones
+
+Safety infrastructure markers
+
+Dynamic route recalculation
+
+Real-time alert generation
+
+🛠️ Tech Stack
+
+Frontend
+
+React (Vite)
+
+JavaScript
+
+React Leaflet
+
+Leaflet.js
+
+Mapping & Routing
+
+OpenStreetMap
+
+OSRM Routing API
+
+Nominatim Geocoding API
+
+Styling
+
+Roboto (Google Fonts)
+
+Custom dark UI
+
+📦 Installation
+git clone https://github.com/yourusername/adaptive-campus-safety.git
+cd adaptive-campus-safety
+npm install
+npm run dev
+
+Open:
+
+http://localhost:5173
+
+🗺️ Why It Matters
+
+Most navigation tools optimize for time.
+This system optimizes for safety.
+
+Adaptive Campus Safety demonstrates how routing algorithms can dynamically adapt to environmental risk — transforming navigation into a safety-first experience for urban campuses.
