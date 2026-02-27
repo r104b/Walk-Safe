@@ -1,9 +1,18 @@
-// src/components/LeafletMap.jsx
 import React from "react";
 import { MapContainer, TileLayer, Marker, Circle, Polyline, Popup } from "react-leaflet";
 import { CENTER, riskZones, safeNodes } from "../data/campus";
 
-export default function LeafletMap({ startLL, goalLL, routeLL }) {
+export default function LeafletMap({ startLL, goalLL, routeLL, mode }) {
+  const isDay = mode === "day";
+
+  const tileUrl = isDay
+    ? "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    : "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+
+  const tileAttrib = isDay
+    ? "&copy; OpenStreetMap contributors"
+    : "&copy; OpenStreetMap contributors &copy; CARTO";
+
   return (
     <div style={{ height: "calc(100vh - 40px)", width: "100%", borderRadius: 16, overflow: "hidden" }}>
       <MapContainer
@@ -11,25 +20,20 @@ export default function LeafletMap({ startLL, goalLL, routeLL }) {
         zoom={16}
         style={{ height: "100%", width: "100%" }}
       >
-        {/* keep your dark map */}
-        <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-          attribution="&copy; OpenStreetMap contributors &copy; CARTO"
-        />
+        <TileLayer url={tileUrl} attribution={tileAttrib} />
 
-        {/* Start / Destination markers */}
         {startLL && (
           <Marker position={[startLL.lat, startLL.lng]}>
             <Popup><strong>Start</strong></Popup>
           </Marker>
         )}
+
         {goalLL && (
           <Marker position={[goalLL.lat, goalLL.lng]}>
             <Popup><strong>Destination</strong></Popup>
           </Marker>
         )}
 
-        {/* Risk zones */}
         {riskZones.map(z => (
           <Circle
             key={z.id}
@@ -44,19 +48,17 @@ export default function LeafletMap({ startLL, goalLL, routeLL }) {
           </Circle>
         ))}
 
-        {/* Safe nodes */}
         {safeNodes.map(s => (
           <Circle
             key={s.id}
             center={[s.lat, s.lng]}
             radius={s.r_m}
-            pathOptions={{ color: "#4dabf7", fillColor: "#4dabf7", fillOpacity: 0.2 }}
+            pathOptions={{ color: "#4dabf7", fillColor: "#4dabf7", fillOpacity: 0.18 }}
           >
             <Popup>{s.label}</Popup>
           </Circle>
         ))}
 
-        {/* Route */}
         {routeLL?.length > 1 && (
           <Polyline
             positions={routeLL.map(p => [p.lat, p.lng])}

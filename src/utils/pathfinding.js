@@ -1,4 +1,3 @@
-// src/utils/pathfinding.js
 import { riskZones } from "../data/campus";
 
 // Haversine distance in meters
@@ -17,7 +16,6 @@ function distM(a, b) {
   return 2 * R * Math.asin(Math.sqrt(x));
 }
 
-// Alerts if route passes near risk circles
 export function computeAlerts(routeLL, mode) {
   const alerts = [];
   if (!routeLL?.length) return alerts;
@@ -41,7 +39,6 @@ export function computeAlerts(routeLL, mode) {
   return alerts;
 }
 
-// Simple “risk score” for the route (higher = worse)
 export function computeRouteRisk(routeLL, mode) {
   if (!routeLL?.length) return Infinity;
 
@@ -52,7 +49,7 @@ export function computeRouteRisk(routeLL, mode) {
     for (const z of riskZones) {
       const d = distM(p, { lat: z.lat, lng: z.lng });
       if (d <= z.r_m) {
-        const closeness = 1 - d / z.r_m; // 0..1
+        const closeness = 1 - d / z.r_m;
         score += z.severity * (0.5 + 0.5 * closeness) * mult;
       }
     }
