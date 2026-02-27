@@ -1,3 +1,4 @@
+// src/components/Alerts.jsx
 import React from "react";
 
 export default function Alerts({ alerts }) {

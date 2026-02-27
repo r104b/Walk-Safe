@@ -1,20 +1,12 @@
-export const GRID_W = 20;
-export const GRID_H = 14;
+export const CENTER = { lat: 43.6577, lng: -79.3788 };
 
-// cells you cannot walk through
-export const blocked = new Set([
-  "8,6", "8,7", "8,8", "9,8", "10,8", "11,8",
-]);
-
-// risk zones (higher severity = more avoided, especially at night)
 export const riskZones = [
-  { id: "z1", cx: 6,  cy: 4,  r: 3, severity: 3, label: "Poor lighting area" },
-  { id: "z2", cx: 14, cy: 9,  r: 2, severity: 4, label: "Recent incident reports" },
-  { id: "z3", cx: 3,  cy: 11, r: 2, severity: 2, label: "Low foot traffic" },
+  { id: "z1", lat: 43.6579, lng: -79.3812, r_m: 120, severity: 3, label: "Poor lighting area" },
+  { id: "z2", lat: 43.6566, lng: -79.3774, r_m: 90,  severity: 4, label: "Recent incident reports" },
+  { id: "z3", lat: 43.6590, lng: -79.3779, r_m: 80,  severity: 2, label: "Low foot traffic" },
 ];
 
-// safer points that routes can prefer slightly
 export const safeNodes = [
-  { x: 10, y: 3, label: "Security desk" },
-  { x: 17, y: 6, label: "Well-lit corridor" },
+  { id: "s1", lat: 43.6576, lng: -79.3796, r_m: 40, label: "Security desk" },
+  { id: "s2", lat: 43.6584, lng: -79.3781, r_m: 40, label: "Well-lit corridor" },
 ];
