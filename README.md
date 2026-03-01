@@ -89,4 +89,18 @@ git clone https://github.com/yourusername/adaptive-campus-safety.git
 cd adaptive-campus-safety
 npm install
 npm run dev
+```
+
+Open in your browser:
+
+```
 http://localhost:5173
+```
+
+---
+
+## 🌍 Why It Matters
+
+Traditional navigation tools optimize for time.
+
+Walk-Safe demonstrates how routing systems can dynamically adapt to environmental risk — transforming navigation into a **safety-first experience** for urban campuses.
