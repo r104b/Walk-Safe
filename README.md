@@ -1,71 +1,77 @@
-🗺️ TMU Walk-Safe: Adaptive Campus Safety
+🗺️ TMU Walk-Safe
+Adaptive Campus Safety Routing System
 
-Over 80% of students report feeling unsafe walking around campus, largely because urban campuses are fully integrated into the surrounding city. Students regularly navigate:
+Safety-aware navigation designed for urban campuses.
 
-- High-traffic intersections
+🚨 The Problem
 
-- Crime-prone areas
+Over 80% of students report feeling unsafe walking at night on urban campuses.
 
-- Poorly lit streets
+Students regularly navigate:
 
-- Construction zones
+High-traffic intersections
 
-- Low foot-traffic routes at night
+Crime-prone areas
 
-Other navigation apps optimize for speed, not safety.
+Poorly lit streets
 
-Adaptive Campus Safety introduces safety-aware routing that dynamically adapts to environmental risk factors.
+Construction zones
 
-🗺️ What It Does
+Low foot-traffic routes
 
-This web app:
+Most navigation apps optimize for speed, not safety.
 
-📍 Accepts real start and destination locations
+💡 The Solution
+
+Walk-Safe introduces adaptive, safety-aware routing that dynamically responds to environmental risk factors.
+
+Instead of returning the fastest route, the system prioritizes safer navigation paths.
+
+🧭 What It Does
+
+📍 Accepts real start and destination inputs
 
 🗺️ Generates real walking routes
 
-🔴 Detects high-risk zones along the route
+🔴 Detects high-risk zones
 
-🔁 Automatically reroutes around dangerous areas
+🔁 Automatically reroutes around hazards
 
-🌙 Increases risk weighting at night
+🌙 Applies higher risk weighting at night
 
 ⚠️ Displays live alerts
 
-📊 Calculates a dynamic safety risk score
+📊 Calculates a dynamic safety score
 
-Instead of giving the fastest path, the system prioritizes safer navigation through urban campus environments.
+⚙️ How It Works
 
-🗺️ How It Works
+Converts user input to coordinates using OpenStreetMap (Nominatim)
 
-Converts user input into coordinates using OpenStreetMap geocoding
+Retrieves walking routes via OSRM Routing API
 
-Retrieves walking routes using OSRM
+Checks route intersection with predefined hazard zones
 
-Detects if the route intersects hazard zones
+Generates detour waypoints when risk is detected
 
-Automatically generates a detour waypoint
+Recalculates safer paths dynamically
 
-Recalculates the route to avoid danger
+Applies night-mode risk multipliers
 
-Applies higher risk multipliers in Night Mode
+✨ Features
 
-🗺️ Features
+Dark & Light Map Modes
 
-Dark & Light map modes
+Real-World Walking Routes
 
-Real-world walking routes
+Visualized Hazard Zones
 
-Visualized hazard zones
+Safety Infrastructure Markers
 
-Safety infrastructure markers
+Dynamic Route Recalculation
 
-Dynamic route recalculation
-
-Real-time alert generation
+Real-Time Risk Alerts
 
 🛠️ Tech Stack
-
 Frontend
 
 React (Vite)
@@ -88,7 +94,7 @@ Styling
 
 Roboto (Google Fonts)
 
-Custom dark UI
+Custom Dark UI
 
 📦 Installation
 git clone https://github.com/yourusername/adaptive-campus-safety.git
@@ -96,13 +102,11 @@ cd adaptive-campus-safety
 npm install
 npm run dev
 
-Open:
+Open in browser:
 
 http://localhost:5173
+🌍 Why It Matters
 
-🗺️ Why It Matters
+Traditional navigation tools optimize for time.
 
-Most navigation tools optimize for time.
-This system optimizes for safety.
-
-Adaptive Campus Safety demonstrates how routing algorithms can dynamically adapt to environmental risk — transforming navigation into a safety-first experience for urban campuses.
+Walk-Safe demonstrates how routing systems can dynamically adapt to environmental risk — transforming navigation into a safety-first experience for urban campuses.
